@@ -1,0 +1,42 @@
+order,duration,ResponseId,reading_1,comprehension_1,questions_hard_1,like_it_1,usual_1,age_1,gender_txt,gender_num,gender_other,master_program
+13,67,R_3frdFfBiUfMzgfI,4,3,6,5,3,24,men,2,,architecture
+20,63,R_3kvWibbf6RYJPgC,5,5,6,3,2,22,women,1,,architecture
+21,67,R_1djdcZ4JvznYoWp,5,4,6,6,4,22,women,1,,architecture
+17,61,R_BRhF6NazwaBYGK5,3,2,5,6,4,21,men,2,,molecular and biological chemistry
+33,90,R_1CqJMiTkHMHkxCH,2,4,4,4,2,22,men,2,,molecular and biological chemistry
+12,63,R_3CEkOfNPwPr7S5S,3,5,7,2,2,22,men,2,,data science
+22,71,R_3s6SXgJESHpcVqP,4,2,4,5,1,22,women,1,,electrical and electronic engineering
+2,1201,R_2y44kTZcD70HrS6,4,4,4,3,1,22,women,1,,chemical engineering and biotechnology
+4,51,R_26neZYJqEhEwWJX,4,5,5,5,1,22,women,1,,chemical engineering and biotechnology
+10,51,R_3mh649YjV7CW311,2,3,4,5,4,22,women,1,,chemical engineering and biotechnology
+19,71,R_cVhuaZJKBcsyHL3,5,6,6,4,3,20,women,1,,chemical engineering and biotechnology
+24,86,R_1oHJma6etX2vSwr,4,3,7,2,2,21,men,2,,chemical engineering and biotechnology
+9,46,R_3n7XBZDZiSDOLdJ,4,3,6,4,3,22,men,2,,civil engineering
+15,61,R_1N7TIgYgBuOWzSh,4,5,5,2,1,23,men,2,,civil engineering
+25,69,R_RgGAjCUkQcAVfSV,3,5,7,1,1,22,women,1,,mechanical engineering
+32,65,R_27UyfhGg6B4KDBe,3,4,4,5,3,23,men,2,,mechanical engineering
+5,48,R_ZlqJXUSRolAl8g9,4,5,6,7,1,22,women,1,,it
+7,40,R_urDBSFLURFjT9br,5,4,6,5,3,21,men,2,,it
+11,57,R_2YyTtu22a9rAB12,5,5,4,3,6,24,men,2,,it
+34,79,R_WeqkMySruFM1ii5,3,3,4,4,5,21,men,2,,it
+28,83,R_294fzamAshrB8cq,4,4,4,4,3,22,women,1,,life sciences engineering
+30,113,R_xmiPn0YEtoV6FWN,4,4,6,3,2,22,women,1,,life sciences engineering
+36,117,R_28ZE7abknWbTgfM,5,4,5,6,1,23,men,2,,mathematical engineering
+14,808,R_3kMUDcl4tVa4l7d,3,4,5,5,1,22,men,2,,mathematics
+6,712,R_O6vlzvCcpAdh01X,3,2,4,4,4,23,men,2,,microtechnique
+8,53,R_247oXikQ5UmebVT,3,3,3,3,3,22,men,2,,microtechnique
+1,35,R_2A1gOqGaO7mhKAC,1,1,1,2,4,24,men,2,,neuro-x
+31,1020,R_3s6vut25mO9Bt0E,2,2,6,5,4,22,women,1,,neuro-x
+16,59,R_2aPkMC0szxCqzFh,3,3,5,2,4,21,men,2,,physics and applied physics
+27,96,R_2axKr1czgjVimKU,3,2,6,5,4,22,men,2,,physics and applied physics
+29,72,R_1NzbIukp0KA6ays,4,4,5,6,2,22,NA,NA,Inconnu,physics and applied physics
+37,129,R_3GlDZQC0RYs55P6,5,6,6,6,2,21,men,2,,physics and applied physics
+3,866,R_2teVDHXBKPEfKZG,4,5,4,5,3,22,men,2,,robotic
+23,75,R_10P31EU5UUXxOkk,3,3,6,1,2,21,men,2,,robotic
+38,127,R_3HkpBA9sE400YIU,3,5,3,3,2,22,women,1,,robotic
+39,129,R_2dGephTbLKDsMkb,3,3,7,4,3,22,men,2,,robotic
+40,152,R_8zSR2VXhUwMW3QJ,2,4,4,5,5,22,men,2,,robotic
+35,137,R_3NxoWp9ZYzpaadu,3,3,5,6,5,22,men,2,,energy science and technology
+41,970,R_2dWmPHdYBVTtd0O,3,3,5,4,2,22,men,2,,energy science and technology
+18,59,R_3M3xQg9nDssAjGS,2,2,5,2,1,23,men,2,,communication systems
+26,77,R_Wx6rUQALOPRlss1,3,5,6,5,3,22,men,2,,communication systems
