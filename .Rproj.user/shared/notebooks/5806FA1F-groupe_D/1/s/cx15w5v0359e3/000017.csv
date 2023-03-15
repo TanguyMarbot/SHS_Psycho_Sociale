@@ -1,0 +1,2 @@
+"0","ratio <- mes_donnees.dat$ratio_OT"
+"0","hist(ratio)"
