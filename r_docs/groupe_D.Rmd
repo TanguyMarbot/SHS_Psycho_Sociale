@@ -8,52 +8,70 @@ date: "2023-03-15"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## SHS Psycho-Sociale - Groupe D
 
 ```{r import_data}
+#Markdown packages
 library(tidyverse)
-library(effsize)
-library(Hmisc)
-library(gmodels)
+library(tinytex)
+library(rticles)
+library(xaringan)
+library(sjPlot)
+library(lattice)
+library(latticeExtra)
+library(rmdformats)
+library(see)
+library(plm)
+
+#Visualisation
 library(ggplot2)
+library(ggthemes)
+library(gmodels)
+library(kableExtra)
+library(rockchalk)
+
+#Base stats packages
+library(plotrix)
 library(Rmisc)
-library(moments)
+library(psych)
+library(sjmisc)
+library(nortest)
+library(pastecs)
+library(car)
+# library(Rcmdr)
+library(effects)
+library(lm.beta)
+
+# ez anova tools
+library(ez)
+library(stats)
+library(DescTools)
+
+#MLM packages
+library(nlme) # linear models with intra participant correlations (repeated measures)
+library(haven)
+library(lme4)
+library(lmerTest)
 ```
 
 ```{r import_data}
-mes_donnees.dat <- read_csv("../data/longLoss_ef.csv")
+data.dat <- read_csv("../CD_dat_EPFL_clean.csv")
 ```
+
 ```{r summary}
-summary(mes_donnees.dat)
+describe(data.dat)
 ```
 
-```{r boxplots}
- boxplot(ratio_OT ~ diplome, mes_donnees.dat) 
-```
-```{r hist}
-ratio <- mes_donnees.dat$ratio_OT
-hist(ratio)
-#hist(mes_donnees.dat.ratio_OT)#, mes_donnees.dat) 
-```
+## Alpha de Cronbach
 
+```{r alpha sdo}
+sdo <- data.dat[, c("sdo_french_1", "sdo_french_2", "sdo_french_3", "sdo_french_4", "sdo_french_5", "sdo_french_6", "sdo_french_7", "sdo_french_8", "sdo_french_9", "sdo_french_10", "sdo_french_11", "sdo_french_12", "sdo_french_13", "sdo_french_14", "sdo_french_15", "sdo_french_16")]
 
-```{r cars}
-summary(cars)
+psych::alpha(sdo)
 ```
 
-## Including Plots
+```{r alpha edo}
+edo <- data.dat[, c("edo")]
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+psych::alpha(edo)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
-
