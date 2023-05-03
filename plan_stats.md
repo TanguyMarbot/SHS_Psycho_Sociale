@@ -25,8 +25,8 @@ La procédure statistique pour chaque groupe:
 8. Ensuite
   * si les assomptions checks ok:
   * faire une analyse d'interaction (regression linéaire) avec vos variables d'intérêt
-    ** C: l'intéraction genre * contrôle prédit SDO
-    ** D : l'intéraction genre * contrôle prédit EDO
-    ** Il est important de noter que comme vous testez deux outcome sur les mêmes data, il faudrait donc employer un p-value plus streng que .05. EN vue des deux outcome, un heuristique souvent employé est de prendre .05/2 = .025. 
+    - C: l'intéraction genre * contrôle prédit SDO
+    - D : l'intéraction genre * contrôle prédit EDO
+    - Il est important de noter que comme vous testez deux outcome sur les mêmes data, il faudrait donc employer un p-value plus streng que .05. EN vue des deux outcome, un heuristique souvent employé est de prendre .05/2 = .025. 
   * reporter les résultats sous forme graphiques d'interaction (line graphs) 
   * reporter les résultats sous forme écrite (texte descriptif cf. tutoriel)
