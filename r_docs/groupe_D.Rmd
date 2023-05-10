@@ -1,6 +1,9 @@
 ---
 title: "groupe_D"
-output: html_document
+output:
+  html_document: default
+  pdf_document: 
+    latex_engine: xelatex
 date: "2023-03-15"
 ---
 
@@ -10,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## SHS Psycho-Sociale - Groupe D
 
-```{r import_data}
+```{r import libraries}
 #Markdown packages
 library(tidyverse)
 library(tinytex)
@@ -56,6 +59,11 @@ library(lmerTest)
 
 ```{r import_data}
 data.dat <- read_csv("../CD_dat_EPFL_clean.csv")
+
+data.dat <- data.dat[!is.na(data.dat$edo),]
+
+
+
 ```
 
 ```{r summary}
@@ -72,6 +80,129 @@ psych::alpha(sdo)
 
 ```{r alpha edo}
 edo <- data.dat[, c("edo")]
-
-psych::alpha(edo)
+summary(edo)
 ```
+
+```{r assumption checks} 
+norm.edo <- ggplot(data.dat, aes(edo))  + 
+  geom_histogram(aes(y = ..density..), fill = "white", colour = "black", binwidth = 1) + 
+  labs(
+    x= "edo",
+    y = "fraction of participants") + 
+  stat_function(fun=dnorm, args=list(mean = mean(data.dat$edo, na.rm = TRUE), sd = sd(data.dat$edo, na.rm = TRUE)), colour = "blue", size=1) +
+  theme_bw()
+
+norm.edo 
+```
+
+
+```{r}
+```
+
+
+```{r}
+boxplot(data.dat$edo)$out #Valeurs des VE
+```
+```{r heteroscedasticité}
+# pour un model simple qui cherche à prédire l'importance de l'edo en fonction du groupe de contrôle et du genre
+edo.mod <- lm(edo ~ #Progress
+                gender*condrition_high_low_control
+              , data = data.dat, na.action = na.omit)
+
+#fitted values pour plot et std. and studentised residuals dans nos données
+data.dat$fitted <- edo.mod$fitted.values
+data.dat$standardized.residuals<- rstandard(edo.mod)
+data.dat$studentized.residuals<-rstudent(edo.mod)
+
+# plot des fitted values against std. residuals
+scatter.resid <- ggplot(data.dat, aes(fitted, studentized.residuals))
+scatter.resid + geom_point() + geom_smooth(method = "lm", colour = "Blue")+ labs(x = "Fitted
+Values", y = "Studentized Residual")
+```
+```{r}
+# qqplot des residuels
+qqplot.resid <- ggplot(data.dat, aes(sample=data.dat$studentized.residuals)) + stat_qq() + labs( x="Theoretical Values", y = "Observed Values")
+qqplot.resid
+```
+
+```{r}
+dwt(edo.mod) 
+```
+```{r}
+1/vif(edo.mod)
+```
+
+```{r}
+mean(vif(edo.mod))
+```
+
+```{r}
+edo_male <- data.dat[data.dat$gender == 1, ]
+edo_female <- data.dat[data.dat$gender == 2,]
+
+```
+```{r}
+summary(edo_male$edo)
+summary(edo_female$edo)
+```
+```{r}
+edo_male_high = edo_male[edo_male$condrition_high_low_control == 1, ]
+edo_male_low =edo_male[edo_male$condrition_high_low_control == 2, ]
+
+edo_female_high = edo_female[edo_female$condrition_high_low_control == 1, ]
+edo_female_low = edo_female[edo_female$condrition_high_low_control == 2, ]
+```
+```{r}
+summary(edo_male_high$edo)
+summary(edo_female_high$edo)
+summary(edo_male_low$edo)
+summary(edo_female_low$edo)
+```
+```{r}
+model.1 <- lm(edo ~ condrition_high_low_control + gender + condrition_high_low_control * gender
+              , data = data.dat,na.action = na.omit)
+summary(model.1)
+```
+
+```{r}
+model.2 <- lm(edo ~ condrition_high_low_control + gender  #condrition_high_low_control * gender
+              , data = data.dat,na.action = na.omit)
+summary(model.2)
+```
+```{r leave only female and male}
+data_filtered <- data.dat[data.dat$gender !=3,]
+model.3 <- lm(edo ~ condrition_high_low_control + gender  #condrition_high_low_control * gender
+              , data = data_filtered,na.action = na.omit)
+summary(model.3)
+
+```
+
+
+```{r}
+plotSlopes(model.2, plotx="condrition_high_low_control", modx="gender",
+           interval="confidence", main="Graphique de moderation",
+           xlab="condrition_high_low_control", ylab="edo")
+```
+
+```{r}
+coef(model.1)
+```
+```{r}
+ggplot(data.dat, aes(x=condrition_high_low_control, y=edo, fill=factor(gender), color=factor(gender))) + 
+        geom_point(size = 1.5) + 
+        labs(x = "condrition_high_low_control", y ="edo", colour = "Genre") +
+        scale_color_manual(values=c('#999999','#E69F00','#FF0000' )) +
+        scale_fill_manual(values =c('#999999','#E69F00', '#FF0000')) +
+        guides(fill = F) +
+        geom_smooth(method=lm) +
+        theme_bw()
+```
+```{r}
+plot(allEffects(model.1))
+```
+
+```{r}
+plot(allEffects(model.3))
+
+```
+
